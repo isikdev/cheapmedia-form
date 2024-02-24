@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Выставление счетов</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <h1>Выставление счетов</h1>
+    <form id="invoiceForm">
+      <h3>Номер счета</h3>
+      <!-- Номер счета будет сгенерирован PHP скриптом -->
+      <input type="hidden" name="invoiceNumber" id="invoiceNumber">
+
+      <h3>Дата счета</h3>
+      <!-- Дата счета будет текущей датой -->
+      <input type="text" class="form-control" name="invoiceDate" id="invoiceDate" readonly>
+
+      <h3>Реквизиты</h3>
+      <!-- Фиксированные реквизиты -->
+      <p>ИНН: 7203406721</p>
+      <p>КПП: 720301001</p>
+      <p>Название Получатель: ООО «Чипмедиа.ру»</p>
+      <p>Банк: ЗАПАДНО-СИБИРСКОЕ ОТДЕЛЕНИЕ№8647 ПАО СБЕРБАНК</p>
+      <p>БИК: 047102651</p>
+      <p>АК: 30101810800000000651</p>
+
+      <h3>Название услуги / товара</h3>
+      <!-- Выбор услуги из списка -->
+      <select class="form-control" name="serviceName" id="serviceName">
+        <option value="">Выберите услугу</option>
+        <option value="Создание сайтов в Тильде">Создание сайтов в Тильде</option>
+        <!-- Остальные варианты услуг -->
+      </select>
+
+      <h3>Срок оказания услуги</h3>
+      <!-- Срок оказания услуги (в днях) -->
+      <input type="text" class="form-control" name="serviceTerm" id="serviceTerm" value="1" readonly>
+
+      <h3>Цена услуги / товара</h3>
+      <!-- Цена услуги (рандомное значение до 12 000) -->
+      <input type="text" class="form-control" name="servicePrice" id="servicePrice" readonly>
+
+      <h3>Реквизиты клиента</h3>
+      <!-- Реквизиты клиента (из базы данных или формы) -->
+      <input type="text" class="form-control" name="clientInfo" id="clientInfo">
+
+      <h3>Текст договора</h3>
+      <!-- Текст договора (возможность редактирования) -->
+      <textarea class="form-control" name="contractText" id="contractText" rows="6"></textarea>
+
+      <!-- Кнопка для генерации PDF -->
+      <button type="button" class="btn btn-primary mt-3" onclick="generatePDF()">Создать PDF</button>
+    </form>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
